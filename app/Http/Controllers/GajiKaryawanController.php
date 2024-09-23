@@ -36,11 +36,20 @@ class GajiKaryawanController extends Controller
         return DataTables::of($gaji_karyawans)
             ->addIndexColumn()
             ->addColumn('aksi', function ($gaji_karyawan) {
-                $btn  = '<a href="' . url('/gaji-karyawan/' . $gaji_karyawan->id) . '" class="btn btn-info btn-sm">Detail</a> ';
-                $btn .= '<a href="' . url('/gaji-karyawan/' . $gaji_karyawan->id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="' . url('/gaji-karyawan/' . $gaji_karyawan->id) . '">'
-                    . csrf_field() . method_field('DELETE') .
-                    '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';
+                $btn  = '<div class="dropdown d-inline-block">';
+                $btn .= '<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="aksiDropdown' . $gaji_karyawan->id . '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                $btn .= 'Aksi';
+                $btn .= '</button>';
+                $btn .= '<div class="dropdown-menu" aria-labelledby="aksiDropdown' . $gaji_karyawan->id . '">';
+                $btn .= '<a class="dropdown-item" href="' . url('/gaji-karyawan/' . $gaji_karyawan->id) . '">Detail</a>';
+                $btn .= '<a class="dropdown-item" href="' . url('/gaji-karyawan/' . $gaji_karyawan->id . '/edit') . '">Edit</a>';
+                $btn .= '<form class="dropdown-item d-inline-block" method="POST" action="' . url('/gaji-karyawan/' . $gaji_karyawan->id) . '" onsubmit="return confirm(\'Apakah Anda yakin menghapus data ini?\');">';
+                $btn .= csrf_field() . method_field('DELETE');
+                $btn .= '<button type="submit" class="btn btn-danger btn-sm">Hapus</button>';
+                $btn .= '</form>';
+                $btn .= '</div>';
+                $btn .= '</div>';
+
                 return $btn;
             })
             ->rawColumns(['aksi'])
@@ -111,6 +120,7 @@ class GajiKaryawanController extends Controller
                 'tunjangan_hadir' => $gaji->tunjangan_hadir,
                 'tunjangan_keluarga' => $gaji->tunjangan_keluarga,
                 'asuransi' => $gaji->asuransi,
+
             ]);
         } else {
             return response()->json(['error' => 'Gaji tidak ditemukan untuk jabatan ini.'], 404);

@@ -12494,7 +12494,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   border-color: rgba(0, 0, 0, 0.1);
 }
 [class*="sidebar-dark-"] {
-  background-color: #001F6F;
+  background-color: #172437;
 }
 [class*="sidebar-dark-"] .user-panel a:hover {
   color: #fff;

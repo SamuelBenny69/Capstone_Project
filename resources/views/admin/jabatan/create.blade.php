@@ -9,7 +9,7 @@
             <form method="POST" action="{{ url('jabatan') }}" class="form-horizontal">
                 @csrf
                 <div class="form-group row">
-                    <label class="col-1 control-label col-form-label">jabatan Kode</label>
+                    <label class="col-3 control-label col-form-label">jabatan Kode</label>
                     <div class="col-11">
                         <input type="text" class="form-control" id="kode_jabatan" name="kode_jabatan"
                             value="{{ old('kode_jabatan') }}" required>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-1 control-label col-form-label">jabatan</label>
+                    <label class="col-3 control-label col-form-label">jabatan</label>
                     <div class="col-11">
                         <input type="text" class="form-control" id="jabatan" name="jabatan" value="{{ old('jabatan') }}"
                             required>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-1 control-label col-form-label"></label>
+                    <label class="col-3 control-label col-form-label"></label>
                     <div class="col-11">
                         <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                         <a class="btn btn-sm btn-default ml-1" href="{{ url('jabatan') }}">Kembali</a>

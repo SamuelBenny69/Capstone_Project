@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GajiController;
 use App\Http\Controllers\GajiKaryawanController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,6 +71,22 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/{id}/edit', [GajiKaryawanController::class, 'edit']);  // menampilkan halaman form edit karyawan
         Route::put('/{id}', [GajiKaryawanController::class, 'update']);     // menyimpan perubahan data karyawan
         Route::delete('/{id}', [GajiKaryawanController::class, 'destroy']);
+    });
+
+    Route::group(['prefix' => 'absen'], function () {
+        Route::get('/', [AbsenController::class, 'index']);
+        Route::post('/list', [AbsenController::class, 'list']);
+        Route::get('/hadir/{id}', [AbsenController::class, 'hadir']);
+        Route::get('/alpha/{id}', [AbsenController::class, 'alpha']);
+        Route::get('/sakit/{id}', [AbsenController::class, 'sakit']);
+        Route::get('/ijin/{id}', [AbsenController::class, 'ijin']);
+    });
+
+
+    Route::group(['prefix' => 'laporan'], function () {
+        Route::get('/', [LaporanController::class, 'index']);
+        Route::get('/cetakLaporanGaji', [LaporanController::class, 'laporanGaji']);
+        Route::get('/cetakLaporanAbsen', [LaporanController::class, 'laporanAbsens']);
     });
 });
 

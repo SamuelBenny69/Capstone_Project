@@ -1,21 +1,9 @@
 <div class="sidebar">
-    <!-- SidebarSearch Form -->
-    <div class="form-inline mt-2">
-        <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                    <i class="fas fa-search fa-fw"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
+<!-- Sidebar Menu -->
+    <nav class="mt-4">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
-                <a href="{{ url('/') }}" class="nav-link  {{ $activeMenu == 'dashboard' ? 'active' : '' }} ">
+                <a href="{{ url('/dashboard') }}" class="nav-link {{ $activeMenu == 'dashboard' ? 'active' : '' }} ">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Dashboard</p>
                 </a>
@@ -45,15 +33,15 @@
                     <p>Gaji Karyawan</p>
                 </a>
             </li>
-            <li class="nav-header">Absens</li>
+            <li class="nav-header">Absen</li>
             <li class="nav-item">
-                <a href="{{ url('/absens') }}" class="nav-link {{ $activeMenu == 'absens' ? 'active' : '' }} ">
+                <a href="{{ url('/absen') }}" class="nav-link {{ $activeMenu == 'absen' ? 'active' : '' }} ">
                     <i class="nav-icon fas fa-cubes"></i>
-                    <p>Absens</p>
+                    <p>Absen</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/transaksi') }}" class="nav-link {{ $activeMenu == 'penjualan' ? 'active' : '' }} ">
+                <a href="{{ url('/laporan') }}" class="nav-link {{ $activeMenu == 'laporan' ? 'active' : '' }} ">
                     <i class="nav-icon fas fa-cash-register"></i>
                     <p>Laporan</p>
                 </a>

@@ -28,6 +28,7 @@
                                 <th>Tunjangan Kehadiran</th>
                                 <th>Tunjangan Keluarga</th>
                                 <th>Asuransi</th>
+                                <th>Total Gaji</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -92,7 +93,7 @@
                         className: "text-center",
                         orderable: true,
                         searchable: true,
-                        render: function(data, type, row){
+                        render: function(data, type, row) {
                             return formatRupiah(data)
                         }
                     }, {
@@ -100,7 +101,7 @@
                         className: "text-center",
                         orderable: false,
                         searchable: false,
-                        render: function(data, type, row){
+                        render: function(data, type, row) {
                             return formatRupiah(data)
                         }
                     }, {
@@ -108,7 +109,7 @@
                         className: "text-center",
                         orderable: false,
                         searchable: false,
-                        render: function(data, type, row){
+                        render: function(data, type, row) {
                             return formatRupiah(data)
                         }
                     }, {
@@ -116,8 +117,23 @@
                         className: "text-center",
                         orderable: false,
                         searchable: false,
-                        render: function(data, type, row){
+                        render: function(data, type, row) {
                             return formatRupiah(data)
+                        }
+                    }, {
+                        data: "",
+                        className: "text-center",
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, type, row) {
+                            // Hitung total gaji
+                            var totalGaji = parseInt(row.gaji.gaji_pokok) +
+                                parseInt(row.gaji.tunjangan_hadir) +
+                                parseInt(row.gaji.tunjangan_keluarga) +
+                                parseInt(row.gaji.asuransi);
+
+                            return formatRupiah(totalGaji);
+
                         }
                     }, {
                         data: "aksi",
